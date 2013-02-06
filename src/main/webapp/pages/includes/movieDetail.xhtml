@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich">
+
+    <h:form rendered="#{netflix.movieDetailVisible}">
+        <table class="movieDetails">
+            <tr>
+                <td valign="top">
+                    <h2><a href="#{netflix.movieForDetail.netflixUrl}"><h:outputText value="#{netflix.movieForDetail.title}" /></a><h:outputText value="&#160;&#160;&#160;" /><h:outputText value="#{netflix.movieForDetail.averageRatingAsPicture}" escape="false" /></h2>
+                    <b><h:outputText value="#{netflix.movieForDetail.genresAsString}" /></b><br />
+                    <b><h:outputText value="#{netflix.movieForDetail.releaseYear}" /><h:outputText value=", " /><h:outputText value="#{netflix.movieForDetail.runtimeInMinutesAsString}" /></b><br /><br />
+                    <b>Directors: </b>
+           			<ui:repeat value="#{netflix.movieForDetail.directors}" var="director">
+						<a4j:commandLink action="#{netflix.showStarDetail}" value="#{director.name}" reRender="mainNetflixPanel" status="movieSearchButtonStatus">						                                          
+							<f:setPropertyActionListener target="#{netflix.idOfStarForDetail}"	value="#{director.id}" />									
+						</a4j:commandLink>	                    
+                		<h:outputText value=", " />
+            		</ui:repeat><br />
+            		<b>Cast: </b>
+            		<ui:repeat value="#{netflix.movieForDetail.cast}" var="star">
+						<a4j:commandLink action="#{netflix.showStarDetail}" value="#{star.name}" reRender="mainNetflixPanel" status="movieSearchButtonStatus">						                                          
+							<f:setPropertyActionListener target="#{netflix.idOfStarForDetail}"	value="#{star.id}" />									
+						</a4j:commandLink>	            
+                		<h:outputText value=", " />
+            		</ui:repeat><br />
+            	</td>
+            	<td class="imageColumn">
+                	<img src="#{netflix.movieForDetail.pictureBigUrl}" />
+            	</td>
+            </tr>
+        </table>
+        <p>
+        	<h:outputText value="#{netflix.movieForDetail.awardsAsString}" escape="false" />
+        	<h:outputText value="#{netflix.movieForDetail.officialUrlAsString}" escape="false" />
+        </p>
+        <p class="movieDetail">
+        	<h:outputText value="#{netflix.movieForDetail.synopsis}" escape="false" /><br />
+        </p>
+        <p>        
+		<a4j:commandLink action="#{netflix.backFromMovieDetail}" value="Back" styleClass="backLink" reRender="movieSearchResults" 
+			    		   status="movieSearchButtonStatus" />	        
+        </p>
+    </h:form>
+</ui:composition>			

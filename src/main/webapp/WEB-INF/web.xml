@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<description>NetflixPortlet</description>
+
+	<context-param>
+		<param-name>org.ajax4jsf.SKIN</param-name>
+		<param-value>renewal</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.jboss.portletbridge.WRAP_SCRIPTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.portlet.faces.RENDER_POLICY</param-name>
+		<param-value>ALWAYS_DELEGATE</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.ajax4jsf.RESOURCE_URI_PREFIX</param-name>
+		<param-value>rfRes</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.LoadStyleStrategy</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.LoadScriptStrategy</param-name>
+		<param-value>ALL</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.ajax4jsf.COMPRESS_SCRIPT</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<!--
+		If using the push component, you must enable the following settings
+	-->
+	<!--<context-param>-->
+	<!--<param-name>A4J.AJAX.Push.URL</param-name>-->
+	<!--<param-value>/richFacesPortlet/faces/a4j.push</param-value>-->
+	<!--</context-param>-->
+
+	<!--
+		To handle exceptions on the client using javascript, enable the
+		following
+	-->
+	<!--<context-param>-->
+	<!--<param-name>org.ajax4jsf.handleViewExpiredOnClient</param-name>-->
+	<!--<param-value>true</param-value>-->
+	<!--</context-param>-->
+
+	<!-- JSF -->
+
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>facelets.DEVELOPMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>facelets.SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+
+	<filter>
+		<display-name>Ajax4jsf Filter</display-name>
+		<filter-name>ajax4jsf</filter-name>
+		<filter-class>org.ajax4jsf.Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ajax4jsf</filter-name>
+		<servlet-name>FacesServlet</servlet-name>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>FacesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>FacesServlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+
+	<!--
+		Pay attention to <location> element. It should contain proper path to
+		error pages according to Faces Servlet mapping or exact viewId.
+	-->
+
+	<!--
+		<error-page>
+		<exception-type>javax.servlet.ServletException</exception-type>
+		<location>/faces/error.xhtml</location> </error-page> <error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/faces/error.xhtml</location> </error-page> <error-page>
+		<exception-type>javax.faces.FacesException</exception-type>
+		<location>/faces/error.xhtml</location> </error-page>
+	-->
+
+</web-app>

@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<h:form
+		rendered="#{netflix.searchResultsVisible}" styleClass="movieSearch">
+		<rich:dataTable value="#{netflix.searchedMovies}" var="movie"
+			id="netflixMoviesTable" rows="10">
+			<rich:column label="Index" sortBy="#{movie.searchIndex}" width="10%">
+				<f:facet name="header">
+					<h:outputText value="Index" />
+				</f:facet>
+				<h:outputText value="#{movie.searchIndex}" />
+			</rich:column>
+			<rich:column label="Title" sortBy="#{movie.title}">
+				<f:facet name="header">
+					<h:outputText value="Title" />
+				</f:facet>
+				<a4j:commandLink action="#{netflix.showMovieDetail}" value="#{movie.title}" reRender="movieSearchResults" status="movieSearchButtonStatus">						                                          
+						<f:setPropertyActionListener target="#{netflix.idOfMovieForDetail}"	value="#{movie.id}" />									
+				</a4j:commandLink>					
+			</rich:column>
+			<rich:column label="Release year" sortBy="#{movie.releaseYear}"	width="10%">
+				<f:facet name="header">
+					<h:outputText value="Release year" />
+				</f:facet>
+				<h:outputText value="#{movie.releaseYear}" />
+			</rich:column>
+			<rich:column label="Average rating" sortBy="#{movie.averageRating}" width="15%">
+				<f:facet name="header">
+					<h:outputText value="Average rating" />
+				</f:facet>
+				<h:outputText value="#{movie.averageRatingAsPicture}" escape="false" />
+			</rich:column>
+		</rich:dataTable>
+		<rich:spacer height="20" />
+		<rich:datascroller id="meetingRoomsScroller" for="netflixMoviesTable" />
+	</h:form>
+
+</ui:composition>

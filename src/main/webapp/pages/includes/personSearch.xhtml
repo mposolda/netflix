@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"	
+	xmlns:rich="http://richfaces.org/rich">				
+				
+				<h:form rendered="#{netflix.starSearchResultsVisible}"  styleClass="movieSearch">
+							<rich:dataTable value="#{netflix.searchedStars}" var="star" id="netflixStarTable" rows="10">
+								<rich:column label="Index" sortBy="#{star.searchIndex}" width="15%">
+									<f:facet name="header">
+										<h:outputText value="Index" />
+									</f:facet>
+									<h:outputText value="#{star.searchIndex}" />
+								</rich:column>							
+								<rich:column label="Name" sortBy="#{star.name}">
+									<f:facet name="header">
+										<h:outputText value="Name" />
+									</f:facet>
+									<a4j:commandLink action="#{netflix.showStarDetail}" value="#{star.name}" reRender="peopleSearchResults" status="peopleSearchButtonStatus">						                                          
+										<f:setPropertyActionListener target="#{netflix.idOfStarForDetail}"	value="#{star.id}" />									
+									</a4j:commandLink>										
+								</rich:column>
+							</rich:dataTable>
+							<rich:spacer height="20" />
+		            		<rich:datascroller id="starsScroller" for="netflixStarTable" />							
+				</h:form>
+				
+</ui:composition>	

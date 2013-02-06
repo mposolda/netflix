@@ -1,0 +1,17 @@
+<!-- Rest call -->
+<!--
+String uri = "http://api.netflix.com/catalog/people";
+		HashMap<String, String> callParameters = new HashMap<String, String>();
+		callParameters.put("term", "Scarlett Johanson");
+		callParameters.put("max_results", "1");
+-->
+
+<?xml version="1.0" standalone="yes"?>
+
+<people>
+  <url_template>http://api.netflix.com/catalog/people?{-join|&amp;|term|start_index|max_results}</url_template>
+  <number_of_results>7237</number_of_results>
+  <start_index>0</start_index>
+  <results_per_page>1</results_per_page><person><id>http://api.netflix.com/catalog/people/164653</id><name>Scarlett Johansson</name><bio><![CDATA[Born Nov. 22, 1984, in New York City, Scarlett Johansson is that rarest of Hollywood commodities: a child actor who's made the transition to adult roles easily and gracefully. Acting on the New York stage by age 8 (opposite Ethan Hawke in "Sophistry"), she made her film debut two years later in Rob Reiner's North.<p>In 1996, Johansson's work in Manny & Lo caught the attention of Robert Redford, who cast her as Kristin Scott Thomas' daughter in The Horse Whisperer, a role that brought her widespread critical acclaim. From there, it was on to a co-starring role (opposite Thora Birch) in director Terry Zwigoff's Ghost World.<p>Johansson's sensitive turn opposite Bill Murray in Lost in Translation (2003) cemented her reputation as a serious, almost-grown-up actress, and she's worked steadily since in films, including The Girl with the Pearl Earring, The Island and Woody Allen's Match Point (2005).]]></bio><link href="http://api.netflix.com/catalog/people/164653/filmography" rel="http://schemas.netflix.com/catalog/titles.filmography" title="filmography"></link><link href="http://www.netflix.com/RoleDisplay/Scarlett_Johansson/164653" rel="alternate" title="web page"></link></person>
+
+</people>
