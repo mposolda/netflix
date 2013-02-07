@@ -11,42 +11,14 @@
 	<url>http://www.eejot.org</url>
 
 	<properties>
-		<portal.dir>/home/mposolda/software/jboss-epp-5.0-qVue/jboss-as</portal.dir>
-		<portal.config>default</portal.config>
-		<portal.deploy.dir>${portal.dir}/server/${portal.config}/deploy</portal.deploy.dir>
-		
 		<jsf.version>1.2_13</jsf.version>
 		<richfaces.version>3.3.3.Final</richfaces.version>
 		<portletbridge.version>2.0.0.CR1</portletbridge.version>
-		<cargo.container>jboss42x</cargo.container>
-		<cargo.jvmargs>-Xms128m -Xmx512m -XX:MaxPermSize=256m</cargo.jvmargs>
-		<cargo.host>localhost</cargo.host>
-		<cargo.port>8080</cargo.port>
-		<cargo.wait>true</cargo.wait>
-		<installDir>${java.io.tmpdir}/cargo-installs</installDir>
 	</properties>
 	
 	<prerequisites>
 		<maven>2.0.9</maven>
 	</prerequisites>
-
-	<licenses>
-		<license>
-			<name></name>
-			<url></url>
-		</license>
-	</licenses>
-
-	<scm>
-		<connection></connection>
-		<developerConnection></developerConnection>
-		<url></url>
-	</scm>
-
-	<issueManagement>
-		<system></system>
-		<url></url>
-	</issueManagement>
 
 	<developers>
 		<developer>
@@ -283,160 +255,5 @@
 		</dependency>
 
 	</dependencies>
-
-	<profiles>
-
-		<!--
-			Deploying netflix WAR file into GateIn with usage of
-			maven-antrun-plugin
-		-->
-		<profile>
-			<id>deploy</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<version>1.3</version>
-						<executions>
-							<execution>
-								<id>deploy</id>
-								<phase>package</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<tasks>
-										<copy
-											file="${project.build.directory}/${project.build.finalName}.war"
-											tofile="${portal.deploy.dir}/netflix-portlet.war"></copy>
-									</tasks>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-
-		<!-- Obsolete jboss portal profiles. TODO: remove them ? -->
-		<profile>
-			<id>jbossportal</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-war-plugin</artifactId>
-						<configuration>
-							<webResources>
-								<resource>
-									<filtering>false</filtering>
-									<directory>${project.basedir}/src/main/jbossportal</directory>
-									<targetPath>WEB-INF</targetPath>
-									<includes>
-										<include>jboss-*.xml</include>
-										<include>portlet-instances.xml</include>
-										<include>richfacesecho-object.xml</include>
-									</includes>
-								</resource>
-							</webResources>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>local</id>
-			<activation>
-				<property>
-					<name>local</name>
-				</property>
-			</activation>
-			<properties>
-				<jboss.zip.home>
-					file:${JBOSS_ZIP_HOME}
-            </jboss.zip.home>
-				<jboss.home.dir>
-					${project.basedir}/target/installs/${JBOSS_HOME_DIR}/server/default
-            </jboss.home.dir>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>download-2.7</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-				<property>
-					<name>!local</name>
-				</property>
-			</activation>
-			<properties>
-				<jboss.zip.home>
-					http://downloads.sourceforge.net/jboss/jboss-portal-2.7.2-bundled.zip
-            </jboss.zip.home>
-				<jboss.home.dir>
-					${project.basedir}/target/installs/jboss-portal-2.7.2-bundled/jboss-portal-2.7.2/server/default
-            </jboss.home.dir>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>local-portal</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
-						<version>1.0</version>
-						<configuration>
-							<wait>true</wait>
-							<container>
-								<containerId>
-									${cargo.container}
-                        </containerId>
-								<zipUrlInstaller>
-									<url>${jboss.zip.home}</url>
-									<installDir>
-										${project.basedir}/target/installs
-                           </installDir>
-								</zipUrlInstaller>
-							</container>
-
-							<configuration>
-								<type>existing</type>
-								<home>${jboss.home.dir}</home>
-								<properties>
-									<cargo.jboss.configuration>
-										default
-                           </cargo.jboss.configuration>
-									<cargo.jvmargs>
-										${cargo.jvmargs}
-                           </cargo.jvmargs>
-									<cargo.host>
-										${cargo.host}
-                           </cargo.host>
-									<cargo.servlet.port>
-										${cargo.port}
-                           </cargo.servlet.port>
-									<cargo.logging>low</cargo.logging>
-								</properties>
-							</configuration>
-
-							<deployer>
-								<type>installed</type>
-								<deployables>
-									<deployable>
-										<location>target/richfaces-basic.war</location>
-										<pingURL>http://localhost:8080/simple-portal/</pingURL>
-									</deployable>
-								</deployables>
-							</deployer>
-						</configuration>
-
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 </project>
