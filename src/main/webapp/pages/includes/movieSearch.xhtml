@@ -5,7 +5,7 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<h:form
+	<rich:panel
 		rendered="#{netflix.searchResultsVisible}" styleClass="movieSearch">
 		<rich:dataTable value="#{netflix.searchedMovies}" var="movie"
 			id="netflixMoviesTable" rows="10">
@@ -38,6 +38,6 @@
 		</rich:dataTable>
 		<!--<rich:spacer height="20" />-->
 		<rich:dataScroller id="meetingRoomsScroller" for="netflixMoviesTable" />
-	</h:form>
+	</rich:panel>
 
 </ui:composition>

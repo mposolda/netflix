@@ -3,15 +3,11 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:a4j="http://richfaces.org/a4j"
-                template="/pages/template.xhtml"
                 xmlns:rich="http://richfaces.org/rich">
 
-    <ui:define name="content">
-      <a4j:outputPanel id="mainNetflixPanel">
           <h:form>
-        <rich:tabPanel id="netflixTabPanel" selectedTab="#{netflix.selectedTab}" switchType="ajax" immediate="true">
-            <rich:tab label="#{netflix.moviesTabText}" name="#{netflix.moviesTabText}">
-                <h:form>
+        <rich:tabPanel id="netflixTabPanel" activeItem="#{netflix.selectedTab}" switchType="ajax">
+            <rich:tab header="#{netflix.moviesTabText}">
                     <rich:panel header="Search for movies, TV shows" headerClass="netflixHeader">
                         <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
                         <h:outputText value="Movie / TV show name: " />
@@ -22,7 +18,6 @@
 								status="movieSearchButtonStatus" />
                     </rich:panel>
                     <div style="background-color: red;" ><h:messages /></div>
-                </h:form>     
 
 				<a4j:status id="movieSearchButtonStatus" forceId="true">
                 	<f:facet name="start">
@@ -44,9 +39,8 @@
 				
             </rich:tab>
 
-            <rich:tab label="#{netflix.peopleTabText}" name="#{netflix.peopleTabText}">
+            <rich:tab header="#{netflix.peopleTabText}">
 
-                <h:form>
                     <rich:panel header="Search for actors, directors"  headerClass="netflixHeader" >
                                 <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
                                 <h:outputText value="Actor / director name: " />
@@ -57,7 +51,6 @@
 								status="peopleSearchButtonStatus" />
                     </rich:panel>
                     <div style="background-color: red;" ><h:messages /></div>
-                </h:form>
 
 				<a4j:status id="peopleSearchButtonStatus" forceId="true">
                 	<f:facet name="start">
@@ -81,6 +74,4 @@
 
         </rich:tabPanel>
           </h:form>
-	  </a4j:outputPanel>
-    </ui:define>
 </ui:composition>

@@ -9,7 +9,7 @@
 		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
 		<init-param>
 			<name>javax.portlet.faces.defaultViewId.view</name>
-			<value>/pages/netflix.xhtml</value>
+			<value>/pages/setflix.xhtml</value>
 		</init-param>
 		<init-param>
 			<name>javax.portlet.faces.defaultViewId.help</name>
@@ -17,10 +17,6 @@
 		</init-param>		
 		<init-param>
 			<name>javax.portlet.faces.preserveActionParams</name>
-			<value>true</value>
-		</init-param>
-		<init-param>
-			<name>javax.portlet.faces.autoDispatchEvents</name>
 			<value>true</value>
 		</init-param>
 		<expiration-cache>-0</expiration-cache>

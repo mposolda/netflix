@@ -3,9 +3,10 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
                 >
 
-    <h:form rendered="#{netflix.movieDetailVisible}">
+    <rich:panel rendered="#{netflix.movieDetailVisible}">
         <table class="movieDetails">
             <tr>
                 <td valign="top">
@@ -43,5 +44,5 @@
 		<a4j:commandLink action="#{netflix.backFromMovieDetail}" value="Back" styleClass="backLink" reRender="movieSearchResults" 
 			    		   status="movieSearchButtonStatus" />	        
         </p>
-    </h:form>
+    </rich:panel>
 </ui:composition>			

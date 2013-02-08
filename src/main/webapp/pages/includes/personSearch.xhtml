@@ -5,7 +5,7 @@
 	xmlns:a4j="http://richfaces.org/a4j"	
 	xmlns:rich="http://richfaces.org/rich">				
 				
-				<h:form rendered="#{netflix.starSearchResultsVisible}"  styleClass="movieSearch">
+				<rich:panel rendered="#{netflix.starSearchResultsVisible}"  styleClass="movieSearch">
 							<rich:dataTable value="#{netflix.searchedStars}" var="star" id="netflixStarTable" rows="10">
 								<rich:column label="Index" sortBy="#{star.searchIndex}" width="15%">
 									<f:facet name="header">
@@ -24,6 +24,6 @@
 							</rich:dataTable>
 							<!--<rich:spacer height="20" />-->
 		            		<rich:dataScroller id="starsScroller" for="netflixStarTable" />
-				</h:form>
+				</rich:panel>
 				
 </ui:composition>	
