@@ -8,7 +8,8 @@
 
     <ui:define name="content">
       <a4j:outputPanel id="mainNetflixPanel">
-        <rich:tabPanel selectedTab="#{netflix.selectedTab}" switchType="ajax">
+          <h:form>
+        <rich:tabPanel id="netflixTabPanel" selectedTab="#{netflix.selectedTab}" switchType="ajax" immediate="true">
             <rich:tab label="#{netflix.moviesTabText}" name="#{netflix.moviesTabText}">
                 <h:form>
                     <rich:panel header="Search for movies, TV shows" headerClass="netflixHeader">
@@ -79,6 +80,7 @@
             </rich:tab>
 
         </rich:tabPanel>
+          </h:form>
 	  </a4j:outputPanel>
     </ui:define>
 </ui:composition>

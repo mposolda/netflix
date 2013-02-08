@@ -1,47 +1,5 @@
-<?xml version="1.0"?>
-<!DOCTYPE faces-config PUBLIC
-   "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
-   "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
-<faces-config>
-
-   <application>
-        <view-handler> org.jboss.portletbridge.application.PortletViewHandler</view-handler>
-        <state-manager>org.jboss.portletbridge.application.PortletStateManager</state-manager>
-        <!--<locale-config>-->
-          <!--<default-locale>en_US</default-locale>-->
-          <!--<supported-locale>en_US</supported-locale>-->
-        <!--</locale-config>-->
-    </application>
-
-   <managed-bean>
-      <description>Netflix Bean</description>
-      <managed-bean-name>netflix</managed-bean-name>
-      <managed-bean-class>org.jboss.portlet.ui.NetflixBean</managed-bean-class>
-      <managed-bean-scope>session</managed-bean-scope>        
-   </managed-bean>
-
-	<!-- navigation rules -->
-
-	<!-- Login not needed. Portal admin needs to provide his credentials in system properties.
-	 
-	<navigation-rule>
-		<from-view-id>/pages/netflix-login.xhtml*</from-view-id>
-		<navigation-case>
-			<from-outcome>loginSuccess</from-outcome>
-		    <to-view-id>/pages/netflix.xhtml</to-view-id>
-		</navigation-case>	
-		<navigation-case>
-			<from-outcome>loginError</from-outcome>
-		    <to-view-id>/pages/netflix-login.xhtml</to-view-id>
-		</navigation-case>			
-	</navigation-rule>
-	-->
-    <navigation-rule>
-        <from-view-id>/pages/netflix.xhtml*</from-view-id>
-        <navigation-case>
-            <from-outcome>*</from-outcome>
-            <to-view-id>/pages/netflix.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd" version="2.1">
 
 </faces-config>

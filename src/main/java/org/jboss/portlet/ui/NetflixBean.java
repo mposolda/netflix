@@ -24,6 +24,8 @@ package org.jboss.portlet.ui;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.logging.Log;
@@ -42,10 +44,12 @@ import org.jboss.portlet.util.WrapperNetflixException;
  * @author <a href="mailto:mposolda@redhat.com">Marek Posolda</a>
  *
  */
+@ManagedBean(name = "netflix")
+@SessionScoped
 public class NetflixBean 
 {
-	private static final String OUTCOME_SUCCESS = "success";
-	private static final String OUTCOME_ERROR = "error";
+	private static final String OUTCOME_SUCCESS = "netflix";
+	private static final String OUTCOME_ERROR = "netflix";
 	private static final String MOVIES_TAB = "Movies and TV shows";
 	private static final String PEOPLE_TAB = "Actors and directors";
 	private static final Log LOG = LogFactory.getLog(NetflixBean.class);
