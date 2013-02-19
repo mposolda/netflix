@@ -18,12 +18,6 @@
                 <h:form>
                     <rich:tabPanel id="netflixTabPanel" activeItem="#{netflix.selectedTab}" switchType="client">
                         <rich:tab header="#{netflix.moviesTabText}" name="#{netflix.moviesTabText}" disabled="false">
-                            <f:facet name="header">#{netflix.moviesTabText}</f:facet>
-                            <!--<f:facet name="header" >
-                                <h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/netflix.jsf" >
-                                    #{netflix.moviesTabText}
-                                </h:outputLink>
-                            </f:facet>-->
 
                             <rich:panel header="Search for movies, TV shows" headerClass="netflixHeader">
                                 <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
@@ -56,15 +50,6 @@
                         </rich:tab>
 
                         <rich:tab header="#{netflix.peopleTabText}" name="#{netflix.peopleTabText}" disabled="false">
-                            <f:facet name="header">#{netflix.peopleTabText}</f:facet>
-                            <!--<f:facet name="header" >
-                                <h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/netflix.jsf">
-                                    #{netflix.peopleTabText}
-                                </h:outputLink>
-                            </f:facet>-->
-                            <!-- <f:facet name="header" >
-                                <a4j:commandLink value="#{netflix.peopleTabText}" event="click" render="@form" />
-                            </f:facet>-->
 
                             <rich:panel header="Search for actors, directors"  headerClass="netflixHeader" >
                                 <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
