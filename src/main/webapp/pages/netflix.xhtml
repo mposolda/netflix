@@ -14,90 +14,91 @@
 
         <h:body>
             <h:outputStylesheet library="css" name="application.css" target="head" />
+            <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px; margin-top: 10px;">
+                <h:form>
+                    <rich:tabPanel id="netflixTabPanel" activeItem="#{netflix.selectedTab}" switchType="client">
+                        <rich:tab header="#{netflix.moviesTabText}" name="#{netflix.moviesTabText}" disabled="false">
+                            <f:facet name="header">#{netflix.moviesTabText}</f:facet>
+                            <!--<f:facet name="header" >
+                                <h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/netflix.jsf" >
+                                    #{netflix.moviesTabText}
+                                </h:outputLink>
+                            </f:facet>-->
+
+                            <rich:panel header="Search for movies, TV shows" headerClass="netflixHeader">
+                                <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
+                                <h:outputText value="Movie / TV show name: " />
+                                <h:inputText size="50" value="#{netflix.currentMovieName}"/>
+                                <a4j:commandButton id="mvoie_detail_submit"
+                                                   action="#{netflix.searchForMovie}" value="Search"
+                                                   reRender="movieSearchResults"
+                                                   status="movieSearchButtonStatus" />
+                            </rich:panel>
+                            <div style="background-color: red;" ><h:messages /></div>
+
+                            <a4j:status id="movieSearchButtonStatus" forceId="true">
+                                <f:facet name="start">
+                                    <a4j:outputPanel layout="block" style="text-align: center;">
+                                        <h:graphicImage  value="/images/loading2.gif" style="width: 80px;" />
+                                    </a4j:outputPanel>
+                                </f:facet>
+                                <f:facet name="stop">
+                                    <rich:panel id="movieSearchResults">
+
+                                        <!-- Table with searched movies -->
+                                        <ui:include src="/pages/includes/movieSearch.xhtml" />
+
+                                        <!-- Detail of the movie -->
+                                        <ui:include src="/pages/includes/movieDetail.xhtml" />
+                                    </rich:panel>
+                                </f:facet>
+                            </a4j:status>
+                        </rich:tab>
+
+                        <rich:tab header="#{netflix.peopleTabText}" name="#{netflix.peopleTabText}" disabled="false">
+                            <f:facet name="header">#{netflix.peopleTabText}</f:facet>
+                            <!--<f:facet name="header" >
+                                <h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/netflix.jsf">
+                                    #{netflix.peopleTabText}
+                                </h:outputLink>
+                            </f:facet>-->
+                            <!-- <f:facet name="header" >
+                                <a4j:commandLink value="#{netflix.peopleTabText}" event="click" render="@form" />
+                            </f:facet>-->
+
+                            <rich:panel header="Search for actors, directors"  headerClass="netflixHeader" >
+                                <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
+                                <h:outputText value="Actor / director name: " />
+                                <h:inputText size="50" value="#{netflix.currentStarName}"/>
+                                <a4j:commandButton id="peopleSearchSubmit"
+                                                   action="#{netflix.searchForStar}" value="Search"
+                                                   reRender="peopleSearchResults"
+                                                   status="peopleSearchButtonStatus" />
+                            </rich:panel>
+                            <div style="background-color: red;" ><h:messages /></div>
+
+                            <a4j:status id="peopleSearchButtonStatus" forceId="true">
+                                <f:facet name="start">
+                                    <a4j:outputPanel layout="block" style="text-align: center;">
+                                        <h:graphicImage  value="/images/loading2.gif" style="width: 80px;" />
+                                    </a4j:outputPanel>
+                                </f:facet>
+                                <f:facet name="stop">
+                                    <rich:panel id="peopleSearchResults">
+
+                                        <!-- Table with searched people -->
+                                        <ui:include src="/pages/includes/personSearch.xhtml" />
+
+                                        <!-- Detail of person (actor, director) -->
+                                        <ui:include src="/pages/includes/personDetail.xhtml" />
+                                    </rich:panel>
+                                </f:facet>
+                            </a4j:status>
+                        </rich:tab>
+
+                    </rich:tabPanel>
+                </h:form>
+            </div>
         </h:body>
-        <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px; margin-top: 10px;">
-            <h:form>
-                <rich:tabPanel id="netflixTabPanel" activeItem="#{netflix.selectedTab}" switchType="ajax">
-                    <rich:tab header="#{netflix.moviesTabText}">
-                        <f:facet name="header" >
-                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/netflix.jsf" >
-                                #{netflix.moviesTabText}
-                            </h:outputLink>
-                        </f:facet>
-
-                        <rich:panel header="Search for movies, TV shows" headerClass="netflixHeader">
-                            <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
-                            <h:outputText value="Movie / TV show name: " />
-                            <h:inputText size="50" value="#{netflix.currentMovieName}"/>
-                            <a4j:commandButton id="mvoie_detail_submit"
-                                               action="#{netflix.searchForMovie}" value="Search"
-                                               reRender="movieSearchResults"
-                                               status="movieSearchButtonStatus" />
-                        </rich:panel>
-                        <div style="background-color: red;" ><h:messages /></div>
-
-                        <a4j:status id="movieSearchButtonStatus" forceId="true">
-                            <f:facet name="start">
-                                <a4j:outputPanel layout="block" style="text-align: center;">
-                                    <h:graphicImage  value="/images/loading2.gif" style="width: 80px;" />
-                                </a4j:outputPanel>
-                            </f:facet>
-                            <f:facet name="stop">
-                                <rich:panel id="movieSearchResults">
-
-                                    <!-- Table with searched movies -->
-                                    <ui:include src="/pages/includes/movieSearch.xhtml" />
-
-                                    <!-- Detail of the movie -->
-                                    <ui:include src="/pages/includes/movieDetail.xhtml" />
-                                </rich:panel>
-                            </f:facet>
-                        </a4j:status>
-                    </rich:tab>
-
-                    <rich:tab header="#{netflix.peopleTabText}">
-                        <f:facet name="header" >
-                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/pages/netflix.jsf">
-                                #{netflix.peopleTabText}
-                            </h:outputLink>
-                        </f:facet>
-                       <!-- <f:facet name="header" >
-                            <a4j:commandLink value="#{netflix.peopleTabText}" event="click" render="@form" />
-                        </f:facet>-->
-
-                        <rich:panel header="Search for actors, directors"  headerClass="netflixHeader" >
-                            <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
-                            <h:outputText value="Actor / director name: " />
-                            <h:inputText size="50" value="#{netflix.currentStarName}"/>
-                            <a4j:commandButton id="peopleSearchSubmit"
-                                               action="#{netflix.searchForStar}" value="Search"
-                                               reRender="peopleSearchResults"
-                                               status="peopleSearchButtonStatus" />
-                        </rich:panel>
-                        <div style="background-color: red;" ><h:messages /></div>
-
-                        <a4j:status id="peopleSearchButtonStatus" forceId="true">
-                            <f:facet name="start">
-                                <a4j:outputPanel layout="block" style="text-align: center;">
-                                    <h:graphicImage  value="/images/loading2.gif" style="width: 80px;" />
-                                </a4j:outputPanel>
-                            </f:facet>
-                            <f:facet name="stop">
-                                <rich:panel id="peopleSearchResults">
-
-                                    <!-- Table with searched people -->
-                                    <ui:include src="/pages/includes/personSearch.xhtml" />
-
-                                    <!-- Detail of person (actor, director) -->
-                                    <ui:include src="/pages/includes/personDetail.xhtml" />
-                                </rich:panel>
-                            </f:facet>
-                        </a4j:status>
-                    </rich:tab>
-
-                </rich:tabPanel>
-            </h:form>
-        </div>
-
     </f:view>
 
