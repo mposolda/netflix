@@ -15,6 +15,7 @@
             <h:outputStylesheet library="css" name="application.css" target="head" />
             <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px; margin-top: 10px;">
 
+                <h:form id="baseForm">
                     <rich:tabPanel id="netflixTabPanel" activeItem="#{netflix.selectedTab}" switchType="client">
                         <rich:tab header="#{netflix.moviesTabText}">
 
@@ -60,6 +61,7 @@
                                 <h:inputText size="50" value="#{netflix.currentStarName}"/>
                                 <a4j:commandButton id="peopleSearchSubmit"
                                                    action="#{netflix.searchForStar}" value="Search"
+                                                   execute="peopleTabForm"
                                                    render="peopleSearchResults"
                                                    status="peopleSearchButtonStatus" />
                             </rich:panel>
@@ -72,9 +74,9 @@
                                         <h:graphicImage  value="/images/loading2.gif" style="width: 80px;" />
                                     </a4j:outputPanel>
                                 </f:facet>
-                                <f:facet name="stop">
-                                    <rich:panel id="peopleSearchResults">
+                            </a4j:status>
 
+                            <a4j:outputPanel id="peopleSearchResults">
                                         <!-- Table with searched people -->
                                         <!--<ui:include src="/pages/includes/personSearch.xhtml" />-->
                                         <rich:panel rendered="#{netflix.starSearchResultsVisible}"  styleClass="movieSearch">
@@ -103,13 +105,12 @@
 
                                         <!-- Detail of person (actor, director) -->
                                         <ui:include src="/pages/includes/personDetail.xhtml" />
-                                    </rich:panel>
-                                </f:facet>
-                            </a4j:status>
+
+                            </a4j:outputPanel>
                         </rich:tab>
 
                     </rich:tabPanel>
-
+                </h:form>
             </div>
         </h:body>
     </f:view>
