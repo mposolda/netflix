@@ -6,7 +6,6 @@
 	xmlns:rich="http://richfaces.org/rich">				
 
 				<rich:panel rendered="#{netflix.starSearchResultsVisible}"  styleClass="movieSearch">
-                    <h:form id="personSearchForm">
 							<rich:dataTable value="#{netflix.searchedStars}" var="star" id="netflixStarTable" rows="10">
 								<rich:column label="Index" sortBy="#{star.searchIndex}" width="15%">
 									<f:facet name="header">
@@ -19,13 +18,11 @@
 										<h:outputText value="Name" />
 									</f:facet>
 									<a4j:commandLink action="#{netflix.showStarDetail}" value="#{star.name}" render="peopleSearchResults">
-										<!--<f:setPropertyActionListener target="#{netflix.idOfStarForDetail}"	value="#{star.id}" />-->
+										<f:setPropertyActionListener target="#{netflix.idOfStarForDetail}"	value="#{star.id}" />
 									</a4j:commandLink>										
 								</rich:column>
 							</rich:dataTable>
 							<!--<rich:spacer height="20" />-->
 		            		<rich:dataScroller id="starsScroller" for="netflixStarTable" />
-                        <a4j:commandButton action="#{netflix.showStarDetail}" value="Bradd Pittt" render="peopleSearchResults" />
-                    </h:form>
 				</rich:panel>
 </ui:composition>	

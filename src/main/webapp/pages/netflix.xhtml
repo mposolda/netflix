@@ -59,7 +59,6 @@
                                 <h:inputText size="50" value="#{netflix.currentStarName}"/>
                                 <a4j:commandButton id="peopleSearchSubmit"
                                                    action="#{netflix.searchForStar}" value="Search"
-                                                   execute="peopleTabForm"
                                                    render="peopleSearchResults"
                                                    status="peopleSearchButtonStatus" />
                             </rich:panel>
@@ -73,35 +72,14 @@
                                 </f:facet>
                             </a4j:status>
 
-                            <a4j:outputPanel id="peopleSearchResults">
+                            <rich:panel id="peopleSearchResults">
                                         <!-- Table with searched people -->
-                                        <!--<ui:include src="/pages/includes/personSearch.xhtml" />-->
-                                        <rich:panel styleClass="movieSearch">
-                                                <rich:dataTable value="#{netflix.searchedStars}" var="star" id="netflixStarTable" rows="10">
-                                                    <rich:column label="Index" sortBy="#{star.searchIndex}" width="15%">
-                                                        <f:facet name="header">
-                                                            <h:outputText value="Index" />
-                                                        </f:facet>
-                                                        <h:outputText value="#{star.searchIndex}" />
-                                                    </rich:column>
-                                                    <rich:column label="Name" sortBy="#{star.name}">
-                                                        <f:facet name="header">
-                                                            <h:outputText value="Name" />
-                                                        </f:facet>
-                                                        <a4j:commandLink action="#{netflix.showStarDetail}" value="#{star.name}" render="peopleSearchResults">
-                                                            <!--<f:setPropertyActionListener target="#{netflix.idOfStarForDetail}"	value="#{star.id}" />-->
-                                                        </a4j:commandLink>
-                                                    </rich:column>
-                                                </rich:dataTable>
-                                                <!--<rich:spacer height="20" />-->
-                                                <rich:dataScroller id="starsScroller" for="netflixStarTable" />
-                                                <a4j:commandButton action="#{netflix.showStarDetail}" value="Bradd Pittt" render="peopleSearchResults" />
-                                        </rich:panel>
+                                        <ui:include src="/pages/includes/personSearch.xhtml" />
 
                                         <!-- Detail of person (actor, director) -->
                                         <ui:include src="/pages/includes/personDetail.xhtml" />
 
-                            </a4j:outputPanel>
+                            </rich:panel>
                         </rich:tab>
 
                     </rich:tabPanel>
