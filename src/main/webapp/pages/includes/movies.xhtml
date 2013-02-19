@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich">
+
+    <rich:panel header="Search for movies, TV shows" headerClass="netflixHeader">
+        <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
+        <h:outputText value="Movie / TV show name: " />
+        <h:inputText size="50" value="#{netflix.currentMovieName}"/>
+        <a4j:commandButton id="mvoie_detail_submit"
+                           action="#{netflix.searchForMovie}" value="Search"
+                           reRender="movieSearchResults"
+                           status="movieSearchButtonStatus" />
+    </rich:panel>
+    <div style="background-color: red;" ><h:messages /></div>
+
+    <a4j:status id="movieSearchButtonStatus" forceId="true">
+        <f:facet name="start">
+            <a4j:outputPanel layout="block" style="text-align: center;">
+                <h:graphicImage  value="/images/loading2.gif" style="width: 80px;" />
+            </a4j:outputPanel>
+        </f:facet>
+        <f:facet name="stop">
+            <rich:panel id="movieSearchResults">
+
+                <!-- Table with searched movies -->
+                <ui:include src="/pages/includes/movieSearch.xhtml" />
+
+                <!-- Detail of the movie -->
+                <ui:include src="/pages/includes/movieDetail.xhtml" />
+            </rich:panel>
+        </f:facet>
+    </a4j:status>
+</ui:composition>

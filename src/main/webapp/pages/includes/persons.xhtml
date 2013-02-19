@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich">
+
+    <rich:panel header="Search for actors, directors"  headerClass="netflixHeader" >
+        <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
+        <h:outputText value="Actor / director name: " />
+        <h:inputText size="50" value="#{netflix.currentStarName}"/>
+        <a4j:commandButton id="peopleSearchSubmit"
+                           action="#{netflix.searchForStar}" value="Search"
+                           reRender="peopleSearchResults"
+                           status="peopleSearchButtonStatus" />
+    </rich:panel>
+    <div style="background-color: red;" ><h:messages /></div>
+
+    <a4j:status id="peopleSearchButtonStatus" forceId="true">
+        <f:facet name="start">
+            <a4j:outputPanel layout="block" style="text-align: center;">
+                <h:graphicImage  value="/images/loading2.gif" style="width: 80px;" />
+            </a4j:outputPanel>
+        </f:facet>
+        <f:facet name="stop">
+            <rich:panel id="peopleSearchResults">
+
+                <!-- Table with searched people -->
+                <ui:include src="/pages/includes/personSearch.xhtml" />
+
+                <!-- Detail of person (actor, director) -->
+                <ui:include src="/pages/includes/personDetail.xhtml" />
+            </rich:panel>
+        </f:facet>
+    </a4j:status>
+</ui:composition>

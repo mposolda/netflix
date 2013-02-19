@@ -1,35 +1,16 @@
-<f:view xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:s="http://jboss.com/products/seam/taglib"
-      xmlns:a="http://richfaces.org/a4j">
+<f:view xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j">
      
-    <head>
-       
-       <style>
-                        a { color: #00458b; }
-                        a:hover { color: red; text-decoration: underline; }
-                        .rich-tabpanel-content { padding: 10px; }
-                        td.rich-tab-bottom-line > form > table { width:auto; }
-                        img.icon { margin-right: 5px;}
-                        .netflixHeader { background: #b9090b url('#{facesContext.externalContext.requestContextPath}/images/netflix_logo.gif') no-repeat right  ;  border-color: #97070a; padding-left: 10px; }
-                        .movieDetails { margin-top: 10px; margin-left: 3px; padding-right: 50px;}
-                        .backLink { margin-top: 10px; background: url('#{facesContext.externalContext.requestContextPath}/images/go-previous.png') no-repeat left; padding-left:22px; }                                                     
-                        p.movieDetail { text-indent: 20px ;}
-                        form.movieSearch { margin-top: 20px;}
-                        td.imageColumn { vertical-align: top; text-align: right; padding-right: 3px;}
-                        img.personPhoto { float: right;}
-                        
-                        /* This is a hack, so the edit/view/help menu won't be hidden under the netflix portlet' */
-                        .UIPopupCategory {z-index: 10;}
-       </style>
+    <h:head>
+        <!-- Mimic Internet Explorer 8 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"  />
+    </h:head>
 
-       
-    </head>
-    		
+    <h:body>
+        <h:outputStylesheet library="css" name="application.css" target="head" />
+    </h:body>
     <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px; margin-top: 10px;">
-    	<ui:insert name="content"/>
+    	<ui:insert name="body"/>
     </div>
 	  
 </f:view>
