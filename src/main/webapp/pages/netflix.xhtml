@@ -15,11 +15,11 @@
             <h:outputStylesheet library="css" name="application.css" target="head" />
             <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px; margin-top: 10px;">
 
-                <!--<h:form id="baseForm">-->
+               <h:form id="baseForm">
                     <rich:tabPanel id="netflixTabPanel" activeItem="#{netflix.selectedTab}" switchType="client">
                         <rich:tab header="#{netflix.moviesTabText}">
 
-                            <h:form id="movieTabForm">
+                            <!--<h:form id="movieTabForm">-->
                             <rich:panel header="Search for movies, TV shows" headerClass="netflixHeader">
                                 <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
                                 <h:outputText value="Movie / TV show name: " />
@@ -30,9 +30,9 @@
                                                    status="movieSearchButtonStatus" />
                             </rich:panel>
                             <div style="background-color: red;" ><h:messages /></div>
-                            </h:form>
+                            <!--</h:form>-->
 
-                            <a4j:status id="movieSearchButtonStatus">
+                            <a4j:status name="movieSearchButtonStatus">
                                 <f:facet name="start">
                                     <a4j:outputPanel layout="block" style="text-align: center;">
                                         <h:graphicImage  value="/images/loading2.gif" style="width: 80px;" />
@@ -53,7 +53,6 @@
 
                         <rich:tab header="#{netflix.peopleTabText}">
 
-                            <h:form id="peopleTabForm">
                             <rich:panel header="Search for actors, directors"  headerClass="netflixHeader" >
                                 <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
                                 <h:outputText value="Actor / director name: " />
@@ -65,7 +64,6 @@
                                                    status="peopleSearchButtonStatus" />
                             </rich:panel>
                             <div style="background-color: red;" ><h:messages /></div>
-                            </h:form>
 
                             <a4j:status name="peopleSearchButtonStatus">
                                 <f:facet name="start">
@@ -79,7 +77,6 @@
                                         <!-- Table with searched people -->
                                         <!--<ui:include src="/pages/includes/personSearch.xhtml" />-->
                                         <rich:panel styleClass="movieSearch">
-                                            <h:form id="personSearchForm">
                                                 <rich:dataTable value="#{netflix.searchedStars}" var="star" id="netflixStarTable" rows="10">
                                                     <rich:column label="Index" sortBy="#{star.searchIndex}" width="15%">
                                                         <f:facet name="header">
@@ -99,7 +96,6 @@
                                                 <!--<rich:spacer height="20" />-->
                                                 <rich:dataScroller id="starsScroller" for="netflixStarTable" />
                                                 <a4j:commandButton action="#{netflix.showStarDetail}" value="Bradd Pittt" render="peopleSearchResults" />
-                                            </h:form>
                                         </rich:panel>
 
                                         <!-- Detail of person (actor, director) -->
@@ -109,7 +105,7 @@
                         </rich:tab>
 
                     </rich:tabPanel>
-                <!--</h:form>-->
+                </h:form>
             </div>
         </h:body>
     </f:view>
