@@ -16,8 +16,9 @@
             <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px; margin-top: 10px;">
 
                <h:form id="baseForm">
+                   <a4j:outputPanel id="mainNetflixPanel">
                     <rich:tabPanel id="netflixTabPanel" activeItem="#{netflix.selectedTab}" switchType="client">
-                        <rich:tab header="#{netflix.moviesTabText}">
+                        <rich:tab header="#{netflix.moviesTabText}" name="#{netflix.moviesTabText}">
 
                             <!--<h:form id="movieTabForm">-->
                             <rich:panel header="Search for movies, TV shows" headerClass="netflixHeader">
@@ -51,7 +52,7 @@
 
                         </rich:tab>
 
-                        <rich:tab header="#{netflix.peopleTabText}">
+                        <rich:tab header="#{netflix.peopleTabText}" name="#{netflix.peopleTabText}">
 
                             <rich:panel header="Search for actors, directors"  headerClass="netflixHeader" >
                                 <img src="#{facesContext.externalContext.requestContextPath}/images/system-search.png" alt="search icon" class="icon"/>
@@ -83,6 +84,7 @@
                         </rich:tab>
 
                     </rich:tabPanel>
+                   </a4j:outputPanel>
                 </h:form>
             </div>
         </h:body>

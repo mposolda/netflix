@@ -15,14 +15,14 @@
                     <b><h:outputText value="#{netflix.movieForDetail.releaseYear}" /><h:outputText value=", " /><h:outputText value="#{netflix.movieForDetail.runtimeInMinutesAsString}" /></b><br /><br />
                     <b>Directors: </b>
            			<ui:repeat value="#{netflix.movieForDetail.directors}" var="director">
-						<a4j:commandLink action="#{netflix.showStarDetail}" value="#{director.name}" reRender="mainNetflixPanel" status="movieSearchButtonStatus">						                                          
+						<a4j:commandLink action="#{netflix.showStarDetail}" value="#{director.name}" render="mainNetflixPanel" status="movieSearchButtonStatus">
 							<f:setPropertyActionListener target="#{netflix.idOfStarForDetail}"	value="#{director.id}" />									
 						</a4j:commandLink>	                    
                 		<h:outputText value=", " />
             		</ui:repeat><br />
             		<b>Cast: </b>
             		<ui:repeat value="#{netflix.movieForDetail.cast}" var="star">
-						<a4j:commandLink action="#{netflix.showStarDetail}" value="#{star.name}" reRender="mainNetflixPanel" status="movieSearchButtonStatus">						                                          
+						<a4j:commandLink action="#{netflix.showStarDetail}" value="#{star.name}" render="mainNetflixPanel" status="movieSearchButtonStatus">
 							<f:setPropertyActionListener target="#{netflix.idOfStarForDetail}"	value="#{star.id}" />									
 						</a4j:commandLink>	            
                 		<h:outputText value=", " />

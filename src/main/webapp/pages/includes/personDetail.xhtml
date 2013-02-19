@@ -26,7 +26,7 @@
                 <f:facet name="header">
                     <h:outputText value="Title" />
                 </f:facet>
-				<a4j:commandLink action="#{netflix.showMovieDetail}" value="#{movie.title}" reRender="mainNetflixPanel" status="peopleSearchButtonStatus">						                                          
+				<a4j:commandLink action="#{netflix.showMovieDetail}" value="#{movie.title}" render="mainNetflixPanel" status="peopleSearchButtonStatus">
 						<f:setPropertyActionListener target="#{netflix.idOfMovieForDetail}"	value="#{movie.id}" />									
 				</a4j:commandLink>	                
             </rich:column>
