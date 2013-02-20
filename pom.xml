@@ -144,10 +144,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>net.oauth</groupId>
-			<artifactId>oauth-core</artifactId>
+			<groupId>net.oauth.core</groupId>
+			<artifactId>oauth</artifactId>
       <scope>provided</scope> <!-- Provided because it's in "org.gatein.lib" module in GateIn environment -->
-			<version>20081127</version>
+			<version>20100527</version>
 		</dependency>
 
 		<dependency>
