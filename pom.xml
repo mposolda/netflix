@@ -128,25 +128,16 @@
       <artifactId>richfaces-core-impl</artifactId>
       <version>${richfaces.version}</version>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>org.jboss.portletbridge</groupId>
-      <artifactId>richfaces4-depchain</artifactId>
-      <version>${portletbridge.version}</version>
-      <type>pom</type>
-    </dependency>
-        -->
+
 		<dependency>
 			<groupId>com.lysergicjava.nfclient</groupId>
 			<artifactId>netflix-java-client</artifactId>
-      <!--<scope>provided</scope>--> <!-- Provided because it needs to be added into "org.gatein.lib" module in GateIn environment -->
       <version>2.1.2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>net.oauth.core</groupId>
 			<artifactId>oauth</artifactId>
-      <!--<scope>provided</scope>--> <!-- Provided because it's in "org.gatein.lib" module in GateIn environment -->
 			<version>20100527</version>
 		</dependency>
 
