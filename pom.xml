@@ -38,7 +38,7 @@
 	<build>
 
 		<defaultGoal>package</defaultGoal>
-		<finalName>netflix-portlet</finalName>
+		<finalName>netflix</finalName>
 
 		<plugins>
 			<plugin>
