@@ -139,14 +139,14 @@
 		<dependency>
 			<groupId>com.lysergicjava.nfclient</groupId>
 			<artifactId>netflix-java-client</artifactId>
-      <scope>provided</scope> <!-- Provided because it needs to be added into "org.gatein.lib" module in GateIn environment -->
+      <!--<scope>provided</scope>--> <!-- Provided because it needs to be added into "org.gatein.lib" module in GateIn environment -->
       <version>2.1.2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>net.oauth.core</groupId>
 			<artifactId>oauth</artifactId>
-      <scope>provided</scope> <!-- Provided because it's in "org.gatein.lib" module in GateIn environment -->
+      <!--<scope>provided</scope>--> <!-- Provided because it's in "org.gatein.lib" module in GateIn environment -->
 			<version>20100527</version>
 		</dependency>
 
