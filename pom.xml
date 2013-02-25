@@ -6,7 +6,7 @@
 	<groupId>org.jboss.portlet</groupId>
 	<artifactId>netflix</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>2.0-SNAPSHOT</version>
 	<name>Netflix JSF Application</name>
 	<url>http://www.eejot.org</url>
 
