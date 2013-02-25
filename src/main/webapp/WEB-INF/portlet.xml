@@ -12,6 +12,10 @@
       <name>javax.portlet.faces.defaultViewId.view</name>
       <value>/pages/netflix.xhtml</value>
     </init-param>
+    <init-param>
+      <name>javax.portlet.faces.defaultViewId.help</name>
+      <value>/pages/netflix-help.xhtml</value>
+    </init-param>
 
     <init-param>
       <name>javax.portlet.faces.preserveActionParams</name>
@@ -22,6 +26,7 @@
     <supports>
       <mime-type>text/html</mime-type>
       <portlet-mode>VIEW</portlet-mode>
+      <portlet-mode>HELP</portlet-mode>
     </supports>
 
     <portlet-info>
